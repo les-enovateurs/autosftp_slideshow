@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  web:
+    build:
+      context: ../../..
+      dockerfile: ./build/docker/dockerfiles/php_apache/Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ../../../:/var/www/html
+#    environment:
+#      XDEBUG_CONFIG: remote_host=192.168.99.100
+    networks:
+      - nova-net
+networks:
+  nova-net:
+    driver: bridge
